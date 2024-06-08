@@ -29,7 +29,7 @@
     const view = new MapView({
       map: map,
       center: [-0.630556, 52.809167], // Longitude, latitude
-      zoom: 17, // Zoom level
+      zoom: 14, // Zoom level
       container: "viewDiv" // Div element
     });
     const graphicsLayer = new GraphicsLayer();  
@@ -165,8 +165,16 @@
 
 
   // Adding the feature layer to the map
+
+  // Define a pop-up for usaeduLayer
+  const popupNTrust = {
+    "title": "National Trust Protected Lands",
+    "content": "<b>Name:</b> {NAME}<br><b>Total Area Under Protection:</b>{Shape__Area_2}<br>"
+  }
   const nationalTrustLayer = new FeatureLayer({
-    url: "https://services-eu1.arcgis.com/NPIbx47lsIiu2pqz/arcgis/rest/services/National_Trust_Open_Data_Land_Always_Open/FeatureServer"
+    url: "https://services-eu1.arcgis.com/NPIbx47lsIiu2pqz/arcgis/rest/services/National_Trust_Open_Data_Land_Always_Open/FeatureServer",
+    outFields: ["NAME","Shape__Area_2"],
+    popupTemplate: popupNTrust
   });
   map.add(nationalTrustLayer);
 
