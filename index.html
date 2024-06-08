@@ -28,7 +28,7 @@
     const view = new MapView({
       map: map,
       center: [-0.630556, 52.809167], // Longitude, latitude
-      zoom: 18, // Zoom level
+      zoom: 17, // Zoom level
       container: "viewDiv" // Div element
     });
     const graphicsLayer = new GraphicsLayer();  
@@ -98,6 +98,69 @@
   });
 
   graphicsLayer.add(polylineGraphic);
+
+  // Code to add Polyline to the map
+  // 2D polyline with to paths with m-values (note that the 2nd path does not have m-values defined)
+  let rings = [
+  [
+            [
+              -0.630261922515416,
+              52.80968809677498
+            ],
+            [
+              -0.6307929999005637,
+              52.809629729938564
+            ],
+            [
+              -0.6308520084997156,
+              52.8094675994264
+            ],
+            [
+              -0.6310236698766687,
+              52.809428688013725
+            ],
+            [
+              -0.6314367300647632,
+              52.809256828856746
+            ],
+            [
+              -0.631093407310857,
+              52.80863099637472
+            ],
+            [
+              -0.6299185997615098,
+              52.8088936525549
+            ],
+            [
+              -0.630261922515416,
+              52.80968809677498
+            ]
+          ]
+    ];
+
+    let polygon = new Polygon({
+      centroid: point,
+      hasZ: false,
+      hasM: false,
+      rings: rings,
+      spatialReference: { wkid: 4326 }
+    });
+
+    const polySymbol = {
+      type: "simple-fill",  // autocasts as new SimpleFillSymbol()
+      color: [ 51,51, 204, 0.4],
+      style: "solid",
+      outline: {  // autocasts as new SimpleLineSymbol()
+        color: "white",
+        width: 1
+      }
+  };
+  const polygonGraphic = new Graphic({
+    geometry: polygon,
+    symbol: polySymbol,
+  });
+
+  graphicsLayer.add(polygonGraphic);
 
   });
  </script>
