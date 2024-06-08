@@ -29,7 +29,7 @@
     const view = new MapView({
       map: map,
       center: [-0.630556, 52.809167], // Longitude, latitude
-      zoom: 14, // Zoom level
+      zoom: 10, // Zoom level
       container: "viewDiv" // Div element
     });
     const graphicsLayer = new GraphicsLayer();  
@@ -190,8 +190,8 @@
       }
   // Define a pop-up for airportLayer
   const popupAirports = {
-    "title": "National Trust Protected Lands",
-    "content": "<b>Name:</b> {name}<br><b>Wikipedia Link:</b>{wikipedia}<br>"
+    "title": "World Wide Airports",
+    "content": '<b>Name:</b> {name}<br><a href="{wikipedia}">Wikipedia Link</a><br>'
   }
   const airportLayer = new FeatureLayer({
     url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Natural_Earth_Airports/FeatureServer",
