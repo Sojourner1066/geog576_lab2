@@ -166,7 +166,7 @@
 
   // Adding the feature layer to the map
 
-  // Define a pop-up for usaeduLayer
+  // Define a pop-up for nationalTrustLayer
   const popupNTrust = {
     "title": "National Trust Protected Lands",
     "content": "<b>Name:</b> {NAME}<br><b>Total Area Under Protection:</b>{Shape__Area_2}<br>"
@@ -177,6 +177,20 @@
     popupTemplate: popupNTrust
   });
   map.add(nationalTrustLayer);
+
+  // Adding the airport feature layer to the map
+
+  // Define a pop-up for airportLayer
+  const popupAirports = {
+    "title": "National Trust Protected Lands",
+    "content": "<b>Name:</b> {name}<br><b>Wikipedia Link:</b>{wikipedia}<br>"
+  }
+  const airportLayer = new FeatureLayer({
+    url: "https://uw-mad.maps.arcgis.com/home/item.html?id=67bec16682c142fb8ccf10bb9e280108&view=service",
+    outFields: ["name","wikipedia"],
+    popupTemplate: popupAirports
+  });
+  map.add(airportLayer);
 
   });
  </script>
