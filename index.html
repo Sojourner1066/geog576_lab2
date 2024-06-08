@@ -14,9 +14,11 @@
            "esri/Map", 
            "esri/views/MapView", 
            "esri/Graphic",  
-           "esri/layers/GraphicsLayer"
+           "esri/layers/GraphicsLayer",
+           "esri/geometry/Polyline",
+           "esri/geometry/Polygon"
           ], 
-           function(esriConfig, Map, MapView, Graphic, GraphicsLayer) {
+           function(esriConfig, Map, MapView, Graphic, GraphicsLayer, Polyline, Polygon) {
     esriConfig.apiKey = "AAPK81b7cca05fd44c15a03618aa1d5dd08bZ1H0FAlNGuWt3LBhlRWCK906HeAPjeUnUsp30Hja37HR_MwAO3BPqQO2D-rMlJTE"
 
     const map = new Map({ 
@@ -55,7 +57,7 @@
     }
     const attributes = {
         Name: "Isaac Newton's Home",
-        Description: "This is the location where Newton wrote most of his most influential works. The apple tree is in the yard."
+        Description: "This is the location where Newton wrote his most influential works. The apple tree is in the yard."
     }
 
     const pointGraphic = new Graphic({  
@@ -66,6 +68,36 @@
     });
 
     graphicsLayer.add(pointGraphic);
+
+  // Code to add Polyline to the map
+  // 2D polyline with to paths with m-values (note that the 2nd path does not have m-values defined)
+    let paths = [
+    [  // first path
+      [-0.630456, 52.808167],
+      [-0.630446, 52.808267],
+      [-0.630436, 52.808367]
+    ]
+    ];
+
+    let polyline = new Polyline({
+      hasZ: false,
+      hasM: false,
+      paths: paths,
+      spatialReference: { wkid: 4326 }
+    });
+
+    const lineSymbol = {
+    type: "simple-line", // autocasts as new SimpleLineSymbol()
+    color: [226, 119, 40], // RGB color values as an array
+    width: 4
+  };
+  const polylineGraphic = new Graphic({
+    geometry: polyline, // Add the geometry created in step 3
+    symbol: lineSymbol, // Add the symbol created in step 4
+    //attributes: lineAtt // Add the attributes created in step 5
+  });
+
+  graphicsLayer.add(polylineGraphic);
 
   });
  </script>
