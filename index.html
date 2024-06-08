@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Hello, Map! </title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="" />
+
+<link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
+<script src="https://js.arcgis.com/4.25/"></script>
+
+<script>  
+  require(["esri/config", "esri/Map", "esri/views/MapView", "esri/widgets/BasemapGallery","esri/widgets/Locate","esri/widgets/Search"], function(esriConfig, Map, MapView, BasemapGallery, Locate, Search) {
+    esriConfig.apiKey = "AAPK81b7cca05fd44c15a03618aa1d5dd08bZ1H0FAlNGuWt3LBhlRWCK906HeAPjeUnUsp30Hja37HR_MwAO3BPqQO2D-rMlJTE"
+
+    const map = new Map({ 
+      basemap: "satellite" // Basemap layer service 
+    });
+
+    const view = new MapView({
+      map: map,
+      center: [-0.630556, 52.809167], // Longitude, latitude
+      zoom: 18, // Zoom level
+      container: "viewDiv" // Div element
+    });
+
+    let basemapGallery = new BasemapGallery({
+      view: view,
+    //   source: {
+    //     portal: "https://uw-mad.maps.arcgis.com",
+    //     // async filterFunction support added at v4.27
+    //     filterFunction: async (item, index, basemaps) => {
+    //       let bool = true;
+    //       await item.load().then((loadedBasemap) => {
+    //         // filter out the Oceans basemap
+    //         if (loadedBasemap.title == "Oceans") {
+    //           bool = false;
+    //         }
+    //       })
+    //       return bool;
+    //     }
+    //   }
+    });
+
+    // Add widget to the top right corner of the view
+    view.ui.add(basemapGallery, {
+      position: "top-right"
+    });
+
+    const locateBtn = new Locate({
+      view: view
+    });
+
+    // Add the locate widget to the top left corner of the view
+    view.ui.add(locateBtn, {
+      position: "top-left"
+    });
+
+    const searchWidget = new Search({
+      view: view
+    });
+    // Adds the search widget below other elements in
+    // the top left corner of the view
+    view.ui.add(searchWidget, {
+      position: "top-left",
+      index: 2
+    });
+
+  });
+ </script>
+
+<style>  html,  body,  #viewDiv {  padding: 0;  margin: 0;  height: 100%;  width: 100%;  }  </style> 
+
+</head>
+<body>
+  <!-- <h1>Hello, world!I am using GIT</h1> -->
+  <div id="viewDiv"></div> 
+</body>
+</html>
