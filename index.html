@@ -179,7 +179,15 @@
   map.add(nationalTrustLayer);
 
   // Adding the airport feature layer to the map
-
+  const airportRenderer = {
+        "type": "simple",
+        "symbol": {
+          "type": "picture-marker",
+          "url": "https://sounny.github.io/agol/outline_local_airport_black_24dp.png",
+          "width": "18px",
+          "height": "18px"
+        }
+      }
   // Define a pop-up for airportLayer
   const popupAirports = {
     "title": "National Trust Protected Lands",
@@ -188,7 +196,8 @@
   const airportLayer = new FeatureLayer({
     url: "https://uw-mad.maps.arcgis.com/home/item.html?id=67bec16682c142fb8ccf10bb9e280108&view=service",
     outFields: ["name","wikipedia"],
-    popupTemplate: popupAirports
+    popupTemplate: popupAirports,
+    renderer: airportRenderer
   });
   map.add(airportLayer);
 
