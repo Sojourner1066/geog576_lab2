@@ -194,7 +194,7 @@
     "content": "<b>Name:</b> {name}<br><b>Wikipedia Link:</b>{wikipedia}<br>"
   }
   const airportLayer = new FeatureLayer({
-    url: "https://uw-mad.maps.arcgis.com/home/item.html?id=67bec16682c142fb8ccf10bb9e280108&view=service",
+    url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Natural_Earth_Airports/FeatureServer",
     outFields: ["name","wikipedia"],
     popupTemplate: popupAirports,
     renderer: airportRenderer
