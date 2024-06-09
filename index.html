@@ -238,7 +238,7 @@
     outFields: ["name","wikipedia"],
     popupTemplate: popupAirports,
     renderer: militaryAirportRenderer,
-    definitionExpression: "type = 'military'", //adding sql to filter for airports
+    definitionExpression: "type LIKE % + 'military' + %", //adding sql to filter for airports
     //labelingInfo: [airportLabels] //adding the labels
   });
   map.add(airportLayer);
