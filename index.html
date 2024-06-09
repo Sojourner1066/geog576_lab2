@@ -234,7 +234,8 @@
   map.add(airportLayer);
 
   const MilitaryAirportLayer = new FeatureLayer({
-    url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Natural_Earth_Airports/FeatureServer",
+    //url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Natural_Earth_Airports/FeatureServer",
+    url:"https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/Natural_Earth_Airports/FeatureServer/0/query?where=type+LIKE+%27%25military%25%27&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=html&token=",
     outFields: ["name","wikipedia"],
     popupTemplate: popupAirports,
     renderer: militaryAirportRenderer,
