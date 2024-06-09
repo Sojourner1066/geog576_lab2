@@ -188,6 +188,17 @@
       "height": "18px"
     }
   };
+
+    // Adding the military airport feature layer to the map
+    const militaryAirportRenderer = {
+    "type": "simple",
+    "symbol": {
+      "type": "picture-marker",
+      "url": "https://sojourner1066.github.io/geog576_lab2/radar_24dp.png",
+      "width": "18px",
+      "height": "18px"
+    }
+  };
   // Define a pop-up for airportLayer
   const popupAirports = {
     "title": "World Wide Airports",
@@ -219,6 +230,16 @@
     renderer: airportRenderer,
     definitionExpression: "type = 'major'", //adding sql to filter for airports
     labelingInfo: [airportLabels] //adding the labels
+  });
+  map.add(airportLayer);
+
+  const MilitaryAirportLayer = new FeatureLayer({
+    url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Natural_Earth_Airports/FeatureServer",
+    outFields: ["name","wikipedia"],
+    popupTemplate: popupAirports,
+    renderer: militaryAirportRenderer,
+    definitionExpression: "type = 'military'", //adding sql to filter for airports
+    //labelingInfo: [airportLabels] //adding the labels
   });
   map.add(airportLayer);
 
